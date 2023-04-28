@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  become: true
+  tasks: 
+
+  - name: Install apache2 package
+    yum: 
+      name: httpd
+
+  - name: Start apache2 service
+    service:
+      name: httpd
+      state: started
+      enabled: true
+
+ 
+
+  
