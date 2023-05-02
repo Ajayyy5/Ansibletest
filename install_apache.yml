@@ -4,22 +4,14 @@
   become: true
   tasks: 
 
-  - name: Install apache2 package
-    yum: 
-      name: httpd
-
-  - name: Start apache2 service
-    service:
-      name: httpd
-      state: started
-      enabled: true
-  
-  - name: add php support for apache
-    apt: 
-      name: libapache2-mod-php
+  - name: Install apache and php package
+    package: 
+      name:
+       - "{{ apache_package }}"
+       - "{{ php_package }}"
       state: latest
-    when: ansible_distribution == "Ubuntu"
-
+      update_cache: yes
+  
 
  
 

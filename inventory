@@ -1,2 +1,2 @@
-ec2-user@172.31.85.233
-ec2-user@172.31.23.54
+ec2-user@172.31.85.233 apache_package=httpd php_package=php
+ec2-user@172.31.23.54 apache_package=httpd php_package=php
