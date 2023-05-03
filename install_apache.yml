@@ -4,22 +4,21 @@
   become: true
   tasks: 
 
+  - name: Update Amazon worker nodes packages and cache
+    tags: always
+    yum:
+      name: '*'
+      state: latest
+
   - name: Install apache and php package
+    tags: http,php
     package: 
       name:
        - "{{ apache_package }}"
        - "{{ php_package }}"
       state: latest
       update_cache: yes
-  
-- hosts: db_servers
-  become: true
-  tasks:  
 
-  - name: install mariadb package 
-    package:
-      name: mariadb-server
-      state: latest
     
  
 
