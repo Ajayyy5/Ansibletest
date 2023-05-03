@@ -19,6 +19,12 @@
       state: latest
       update_cache: yes
 
+  - name: start httpd
+    tags: httpd
+    service:
+      name: httpd
+      state: started
+
   - name: copy default html file for site
     tags: httpd,php
     copy:    

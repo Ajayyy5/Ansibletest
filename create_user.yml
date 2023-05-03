@@ -1,0 +1,19 @@
+- name: Create new user
+  hosts: all
+  become: true
+  vars:
+    username: exampleuser  # Replace with desired username
+  tasks:
+    - name: Create user
+      user:
+        name: "{{ username }}"
+        comment: "Example User"
+        shell: /bin/bash
+        createhome: yes
+    - name: Add user to sudoers
+      lineinfile:
+        path: /etc/sudoers
+        line: "{{ username }} ALL=(ALL) NOPASSWD:ALL"
+        validate: 'visudo -cf %s'
+        state: present
+      when: username != "root"
